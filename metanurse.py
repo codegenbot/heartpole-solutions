@@ -1,7 +1,14 @@
 import sys
 
 for line in sys.stdin:
-    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done = map(float, line.split())
+    (
+        alertness,
+        hypertension,
+        intoxication,
+        time_since_slept,
+        time_elapsed,
+        work_done,
+    ) = map(float, line.split())
 
     if hypertension > 0.7 or intoxication > 0.6 or time_since_slept > 16:
         print(3)  # sleep
