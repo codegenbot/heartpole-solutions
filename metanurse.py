@@ -13,11 +13,11 @@ def main():
             work_done,
         ) = observations
 
-        if time_since_slept > 12 or hypertension > 8 or intoxication > 5:
+        if time_since_slept > 12 or alertness < 0.3:
             print(3)  # Sleep
-        elif alertness < 50 and time_since_slept > 8:
+        elif alertness < 0.7 and intoxication < 0.3:
             print(1)  # Drink coffee and work
-        elif alertness < 30 and time_since_slept > 6:
+        elif hypertension < 0.5 and intoxication < 0.5:
             print(2)  # Drink beer and work
         else:
             print(0)  # Just work
