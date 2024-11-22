@@ -7,7 +7,7 @@ for line in sys.stdin:
         print(3)  # sleep
     elif alertness < 0.4 and hypertension <= 0.6:
         print(1)  # drink coffee and work
-    elif intoxication < 0.2 and alertness < 0.7:
+    elif intoxication < 0.2 and alertness >= 0.4:
         print(2)  # drink beer and work
     else:
         print(0)  # just work
