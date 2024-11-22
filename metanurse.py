@@ -1,27 +1,34 @@
 import sys
 
 
-def main():
-    for _ in range(1000):
-        observations = list(map(float, sys.stdin.readline().strip().split()))
-        (
-            alertness,
-            hypertension,
-            intoxication,
-            time_since_slept,
-            time_elapsed,
-            work_done,
-        ) = observations
+def choose_action(observations):
+    (
+        alertness,
+        hypertension,
+        intoxication,
+        time_since_slept,
+        time_elapsed,
+        work_done,
+    ) = observations
 
-        if time_since_slept > 12 or alertness < 0.3:
-            print(3)  # Sleep
-        elif alertness < 0.7 and intoxication < 0.3:
-            print(1)  # Drink coffee and work
-        elif hypertension < 0.5 and intoxication < 0.5:
-            print(2)  # Drink beer and work
-        else:
-            print(0)  # Just work
+    if (
+        time_since_slept > 12
+        or alertness < 0.3
+        or hypertension > 0.8
+        or intoxication > 0.5
+    ):
+        return 3  # sleep
+    elif alertness < 0.6 and intoxication < 0.2:
+        return 1  # drink coffee and work
+    elif work_done < 0.5 and intoxication < 0.2:
+        return 2  # drink beer and work
+    else:
+        return 0  # just work
 
 
-if __name__ == "__main__":
-    main()
+for _ in range(1000):
+    observations = list(map(float, sys.stdin.readline().strip().split()))
+    if len(observations) != 6:
+        break
+    action = choose_action(observations)
+    print(action)
