@@ -5,23 +5,23 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if hypertension > 0.5 or intoxication > 0.25:
         return 3
     
-    # Sleep if alertness is very low or significant time has passed since last sleep
-    if alertness < 0.5 or time_since_slept > 14:
+    # Sleep if alertness is very low or much time has passed since last sleep
+    if alertness < 0.4 or time_since_slept > 18:
         return 3
 
-    # Use coffee to boost alertness only during initial work phase
-    if alertness < 0.7 and time_elapsed < 8 and work_done < 0.3:
+    # Use coffee to boost alertness during early productive hours
+    if alertness < 0.6 and (time_elapsed < 10 or work_done < 0.5):
         return 1
-
-    # Favor sleep during later hours to maintain health
-    if time_elapsed >= 12 and alertness < 0.6:
+    
+    # Sleep during late hours if alertness is dropping significantly
+    if time_elapsed >= 14 and alertness < 0.5:
         return 3
 
-    # Work if conditions are optimal
-    if alertness >= 0.7 and hypertension < 0.25 and intoxication < 0.15:
+    # With optimal alertness and manageable health risks, just work
+    if alertness >= 0.6 and hypertension < 0.3 and intoxication < 0.2:
         return 0
 
-    # Default to sleep for any significant deviations
+    # Default to sleep if alertness or other conditions necessitate recuperation
     return 3
 
 for line in sys.stdin:
