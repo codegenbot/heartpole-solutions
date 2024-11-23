@@ -11,26 +11,21 @@ def choose_action(observations):
         work_done,
     ) = observations
 
-    # Prioritize sleep for health concerns
+    # Prioritize sleep for health issues
     if (
-        hypertension > 0.05
-        or intoxication > 0.00005
-        or time_since_slept > 0.5
-        or alertness < 0.15
+        hypertension > 0.5
+        or intoxication > 0.01
+        or time_since_slept > 4
+        or alertness < 0.02
     ):
         return 3  # sleep
 
-    # Enhance alertness with coffee if not too intoxicated
-    if alertness < 0.3 and intoxication < 0.00005 and hypertension < 0.05:
+    # Only drink coffee if it won't exacerbate health issues
+    if alertness < 0.1 and intoxication < 0.005 and hypertension < 0.4:
         return 1  # drink coffee and work
 
-    # Use beer to boost work if conditions are right
-    if (
-        work_done < 0.2
-        and intoxication < 0.00005
-        and hypertension < 0.05
-        and time_elapsed < 0.4
-    ):
+    # Avoid beer if it could exacerbate health issues
+    if work_done < 0.05 and intoxication < 0.005 and hypertension < 0.4:
         return 2  # drink beer and work
 
     return 0  # just work
