@@ -10,8 +10,6 @@ def decide_action(
 
     # Manage alertness spikes; prefer sleeping it off rather than relying heavily on coffee
     if alertness < 0.5:
-        if hypertension <= 0.2 and intoxication <= 0.15:
-            return 1  # Drink coffee and work
         return 3  # Sleep
 
     # Allow coffee only if hypertension and intoxication are manageable
