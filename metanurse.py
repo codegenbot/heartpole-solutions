@@ -15,9 +15,6 @@ def decide_action(
     if 0.3 <= hypertension <= 0.36 or 0.15 <= intoxication <= 0.25:
         return 0  # Just work to stabilize
 
-    # Drink beer might not be beneficial due to intoxication, avoid it broadly
-    # Focus on reducing risk of further intoxication.
-
     # Default to working if no health metric indicates immediate risk 
     return 0  # Just work
 
