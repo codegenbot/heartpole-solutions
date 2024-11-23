@@ -13,7 +13,7 @@ def decide_action(observations):
 
     if (
         time_since_slept > 4
-        or alertness < 0.2
+        or alertness < 0.15
         or hypertension > 0.3
         or intoxication > 0.02
     ):
