@@ -1,7 +1,7 @@
 import sys
 
 
-def choose_action(observations):
+def decide_action(observations):
     (
         alertness,
         hypertension,
@@ -13,15 +13,15 @@ def choose_action(observations):
 
     if (
         time_since_slept > 6
-        or alertness < 0.1
-        or hypertension > 0.65
-        or intoxication > 0.1
+        or alertness < 0.2
+        or hypertension > 0.5
+        or intoxication > 0.4
     ):
-        return 3  # sleep
-    elif alertness < 0.2 and intoxication < 0.03 and hypertension < 0.4:
+        return 3  # sleep to recover
+    elif alertness < 0.4 and intoxication < 0.1 and hypertension < 0.3:
         return 1  # drink coffee and work
-    elif work_done < 0.2 and intoxication < 0.03 and hypertension < 0.4:
-        return 0  # just work, avoid beer
+    elif hypertension < 0.1 and intoxication < 0.03 and work_done < 0.1:
+        return 2  # drink beer and work (use sparingly)
     else:
         return 0  # just work
 
@@ -30,5 +30,5 @@ for _ in range(1000):
     observations = list(map(float, sys.stdin.readline().strip().split()))
     if len(observations) != 6:
         break
-    action = choose_action(observations)
+    action = decide_action(observations)
     print(action)
