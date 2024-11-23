@@ -3,7 +3,7 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # Sleep when alertness is low or significantly compromised
+    # Sleep when alertness is low or the user is significantly compromised
     if (
         alertness < 0.3
         or hypertension > 0.7
