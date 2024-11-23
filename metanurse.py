@@ -19,4 +19,4 @@ for line in sys.stdin:
     elif alertness >= 0.7 and hypertension < 0.3 and intoxication < 0.1:
         print(0)  # just work
     else:
-        print(3)  # sleep if unsure
+        print(3)  # sleep
