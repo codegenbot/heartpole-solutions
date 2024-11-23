@@ -11,7 +11,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if alertness < 0.5 and hypertension < 0.25:
         return 1  # Drink coffee to boost alertness and work
 
-    # Favor rest over productivity when reaching risky scores
+    # Begin to favor rest over productivity when reaching risky scores
     if alertness < 0.4 and time_since_slept > 8:
         return 3  # Select sleep over further caffeine use
 
