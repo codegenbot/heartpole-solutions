@@ -9,7 +9,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if alertness < 0.3:
         return 3
     
-    # Encourage rest/coffee if moderately sleep deprived or alertness is low and still early in the cycle
+    # Encourage rest/coffee if moderately sleeping deprived or alertness is low and still early in the cycle
     if time_since_slept > 16:
         return 3
     if alertness < 0.5 and time_elapsed < 8:
