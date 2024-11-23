@@ -17,10 +17,12 @@ def choose_action(observations):
     elif time_since_slept > 3 or alertness < 0.1:
         return 3  # sleep
 
-    # Balance alertness and work done
+    # Use coffee to boost alertness if safe
     if alertness < 0.3 and intoxication < 0.01 and hypertension < 0.4:
         return 1  # drink coffee and work
-    elif work_done < 0.3 and intoxication < 0.01 and hypertension < 0.4:
+
+    # Use beer to boost work done if safe
+    if work_done < 0.3 and intoxication < 0.01 and hypertension < 0.4:
         return 2  # drink beer and work
 
     return 0  # just work
