@@ -10,17 +10,14 @@ for line in sys.stdin:
         work_done,
     ) = map(float, line.split())
 
-    # Health comes first: stricter thresholds for sleep or intoxication management
-    if hypertension > 0.4 or intoxication > 0.2 or time_since_slept > 10:
+    # Prioritize sleep if health conditions are concerning
+    if intoxication > 0.2 or hypertension > 0.4 or time_since_slept > 10:
         print(3)  # sleep
-    # If alertness is low and health allows, consider coffee for productivity
-    elif alertness < 0.5 and hypertension < 0.3 and time_since_slept < 8:
+    # Use coffee to improve alertness judiciously
+    elif alertness < 0.6 and time_since_slept < 8 and hypertension < 0.3:
         print(1)  # drink coffee and work
-    # Use beer to address levels of intoxication and hypertension specifically
-    elif intoxication >= 0.15:
-        print(2)  # drink beer and work
-    # Safest to work when all health factors are optimal
+    # Safe to work if health parameters are okay
     elif alertness >= 0.6 and hypertension < 0.3 and intoxication < 0.1:
         print(0)  # just work
     else:
-        print(3)  # fallback to sleep if conditions are ambiguous
+        print(3)  # fallback to sleep if unsure
