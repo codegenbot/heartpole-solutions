@@ -8,7 +8,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if alertness > 0.7 and hypertension < 0.35 and intoxication < 0.1:
         return 0  # Proceed to work if alertness is good and health metrics are reasonable
     if work_done > 20 and alertness > 0.5 and intoxication < 0.2:
-        return 2  # Relax with beer after completing substantial work, ensuring alertness is maintained
+        return 2  # Relax with beer after completing substantial work
     return 3  # Default to sleep for recovery
 
 for line in sys.stdin:
