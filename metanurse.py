@@ -1,23 +1,25 @@
 import sys
 
-def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    # Enforce sleep for any critical health risks
-    if hypertension > 0.25 or intoxication > 0.2 or time_since_slept > 6:
+def decide_action(
+    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
+):
+    # Prioritize sleep based on severe health risks
+    if hypertension > 0.40 or intoxication > 0.20 or time_since_slept > 10:
         return 3  # Sleep
 
-    # Enforce sleep if alertness is critically low
+    # Sleep if alertness is dangerously low
     if alertness < 0.5:
         return 3  # Sleep
 
-    # Drink coffee to boost alertness safely without high risks
-    if alertness < 0.7 and hypertension < 0.25 and intoxication < 0.15:
+    # Consider drinking coffee to boost alertness safely
+    if 0.5 <= alertness < 0.7 and hypertension <= 0.25 and intoxication <= 0.15:
         return 1  # Drink coffee and work
 
-    # Drink beer only if intoxication is manageable and you are alert
-    if intoxication > 0.15 and alertness >= 0.7 and hypertension < 0.15:
+    # Consider drinking beer when modestly increasing performance without sleep
+    if alertness < 0.6 and 0.1 < intoxication <= 0.2:
         return 2  # Drink beer and work
 
-    # Default to working if all conditions are satisfied
+    # Default to working when health parameters are optimized
     return 0  # Just work
 
 for line in sys.stdin:
