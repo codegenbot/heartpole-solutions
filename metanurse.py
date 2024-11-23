@@ -5,7 +5,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if hypertension > 0.6 or intoxication > 0.4:
         return 3  # Sleep to mitigate high health risks
     
-    # Sleep if very tired or awake too long
+    # Sleep if very tired or been awake too long
     if time_since_slept > 12 or (alertness < 0.2 and time_elapsed >= 16):
         return 3
     
@@ -13,7 +13,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if alertness < 0.5 and time_elapsed < 10:
         return 1
     
-    # Only drink beer when alertness is at a sustainable level and minor stress relief needed
+    # Only drink beer when alertness is at sustainable level and minor stress relief needed
     if alertness >= 0.5 and intoxication < 0.1 and time_elapsed > 15:
         return 2
 
