@@ -1,20 +1,22 @@
 import sys
 
-for line in sys.stdin:
-    (
-        alertness,
-        hypertension,
-        intoxication,
-        time_since_slept,
-        time_elapsed,
-        work_done,
-    ) = map(float, line.split())
+def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
+    if hypertension > 0.5 or intoxication > 0.3:
+        return 3  # sleep if any critical health issue is significant
+    if alertness < 0.3:
+        if time_elapsed < 8:
+            return 1  # drink coffee during working hours
+        else:
+            return 3  # sleep if it's already late
+    if time_since_slept > 8:
+        return 3  # encourage regular sleep intervals
+    if work_done < 0.6 and alertness > 0.6:
+        return 0  # just work if productivity is low but alertness is high
+    if alertness < 0.6 and time_elapsed < 8:
+        return 1  # drink coffee and work to boost productivity
+    return 0  # default to just work
 
-    if hypertension > 0.6 or intoxication > 0.4 or time_since_slept >= 16:
-        print(3)  # sleep
-    elif alertness < 0.5 and time_since_slept < 8:
-        print(1)  # drink coffee and work
-    elif intoxication < 0.2 and alertness > 0.6:
-        print(0)  # just work
-    else:
-        print(2)  # drink beer and work
+for line in sys.stdin:
+    observations = list(map(float, line.strip().split()))
+    action = decide_action(*observations)
+    print(action)
