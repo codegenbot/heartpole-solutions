@@ -20,7 +20,7 @@ def decide_action(
     if alertness >= 0.6 and hypertension < 0.4 and intoxication < 0.2:
         return 0  # Optimal work conditions
 
-    # Default action to work if no conditions for sleep or coffee are met
+    # Default action to work if no conditions for sleep or coffee are hit
     return 0  
 
 for line in sys.stdin:
