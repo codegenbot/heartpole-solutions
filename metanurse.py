@@ -10,13 +10,11 @@ for line in sys.stdin:
         work_done,
     ) = map(float, line.split())
 
-    if hypertension > 0.8 or intoxication > 0.6 or time_since_slept > 14:
+    if hypertension > 0.7 or intoxication > 0.5 or time_since_slept > 8:
         print(3)  # sleep
-    elif alertness < 0.3 and time_since_slept < 8 and hypertension < 0.6:
+    elif alertness < 0.4 and time_since_slept < 6 and hypertension < 0.5:
         print(1)  # drink coffee and work
-    elif intoxication < 0.2:
+    elif alertness >= 0.4 and intoxication < 0.3:
         print(0)  # just work
-    elif intoxication < 0.5 and hypertension < 0.7:
-        print(2)  # drink beer and work
     else:
-        print(3)  # default to cautious sleep if conditions are not met
+        print(2)  # drink beer and work only as last resort, if other conditions not met
