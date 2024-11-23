@@ -1,24 +1,46 @@
 import sys
 
-def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    # Immediate sleep for critical alertness or health issues
-    if alertness < 0.3 or time_since_slept > 16 or hypertension > 0.6 or intoxication > 0.5:
+
+def decide_action(
+    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
+):
+    # Immediate sleep if health issues are significant
+    if hypertension > 0.3 or intoxication > 0.2:
         return 3
 
-    # Sleep if alertness is low and awake time is high
-    if time_since_slept > 12 and alertness < 0.5:
+    # Opt to sleep if time awake is long or alertness is very low
+    if time_since_slept > 8 or alertness < 0.3:
         return 3
 
-    # Use coffee to boost alertness when health metrics are manageable
-    if alertness < 0.7 and hypertension <= 0.3 and intoxication <= 0.2 and time_elapsed < 14:
+    # Use coffee strategically early in the day or if alertness is just below moderate
+    if alertness < 0.6 and time_elapsed < 8:
         return 1
 
-    # Use beer if alertness is moderate and health is stable
-    if alertness >= 0.5 and intoxication <= 0.1 and hypertension <= 0.2 and work_done < 0.6:
+    # Refine beer strategy to be more cautious
+    if (
+        intoxication <= 0.1
+        and alertness < 0.5
+        and work_done < 0.6
+        and time_elapsed < 10
+    ):
         return 2
 
-    # Default to work if health is stable and alertness is maintained
-    return 0 if alertness >= 0.5 else 3
+    # Work with reasonable health and productivity measures
+    if (
+        alertness >= 0.4
+        and hypertension <= 0.1
+        and intoxication <= 0.1
+        and work_done < 0.75
+    ):
+        return 0
+
+    # Adapt rest in late hours based on combined factors
+    if alertness < 0.35 and time_elapsed > 8:
+        return 3
+
+    # Final choice based on moderate alertness
+    return 0 if alertness >= 0.45 else 3
+
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
