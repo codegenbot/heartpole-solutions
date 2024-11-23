@@ -10,6 +10,7 @@ for line in sys.stdin:
         work_done,
     ) = map(float, line.split())
 
+    # Health-centric approach
     if hypertension > 0.4 or time_since_slept > 12 or intoxication > 0.25:
         print(3)  # sleep when critical health risks
     elif time_since_slept > 8:
