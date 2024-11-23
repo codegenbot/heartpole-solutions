@@ -24,7 +24,7 @@ def choose_action(observations):
     if alertness < 0.3 and intoxication < 0.002 and hypertension < 0.2:
         return 1  # drink coffee and work
 
-    # Avoid beer unless absolutely necessary and safe
+    # Avoid beer if it could exacerbate health issues
     if work_done < 0.3 and intoxication < 0.002 and hypertension < 0.2:
         return 2  # drink beer and work
 
