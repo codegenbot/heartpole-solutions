@@ -4,20 +4,24 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # Adjusted threshold levels for better balance between productivity and health
-    if hypertension > 0.5 or intoxication > 0.3:
-        return 3  # Sleep
+    # Prioritize health by resting if hypertension or intoxication are beyond safe limits
+    if hypertension > 0.25 or intoxication > 0.15:
+        return 3
 
-    if alertness < 0.5 or time_since_slept > 10:
-        return 3  # Sleep
+    # Prioritize sleep if alertness is very low or it's been a long time since last sleep
+    if alertness < 0.5 or time_since_slept > 16:
+        return 3
 
-    if alertness < 0.7 and work_done < 0.5:
-        return 1  # Drink coffee and work
+    # Use coffee to boost productivity when fatigue is mild and safe health parameters
+    if alertness < 0.7 and hypertension <= 0.15 and intoxication <= 0.05:
+        return 1
 
-    if alertness >= 0.7 and hypertension < 0.3 and intoxication < 0.2:
-        return 0  # Just work
+    # Encourage relaxation with beer if stress-related parameters are fine
+    if alertness >= 0.9 and hypertension <= 0.1 and intoxication <= 0.05:
+        return 2
 
-    return 3  # Sleep
+    # Default to just working when conditions are optimal
+    return 0
 
 
 for line in sys.stdin:
