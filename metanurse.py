@@ -12,7 +12,7 @@ def choose_action(observations):
     ) = observations
 
     if (
-        hypertension > 0.2
+        hypertension > 0.25
         or intoxication > 0.001
         or time_since_slept > 1.5
         or alertness < 0.1
