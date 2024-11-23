@@ -15,7 +15,7 @@ def decide_action(
     if intoxication < 0.05 and hypertension < 0.05:
         return 0  # Work when healthy and alertness is high
 
-    return 2  # Drink beer as a last resort to slightly lower stress (pleasant action)
+    return 2  # Drink beer as a last resort to slightly lower stress
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
