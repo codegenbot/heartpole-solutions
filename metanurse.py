@@ -3,7 +3,6 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # Priority to minimize health risk and maintain productivity
     if hypertension >= 0.12 or intoxication >= 0.08 or time_since_slept >= 5:
         return 3  # Sleep
 
