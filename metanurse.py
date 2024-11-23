@@ -12,15 +12,15 @@ def choose_action(observations):
     ) = observations
 
     if (
-        time_since_slept > 2.5
-        or alertness < 0.1
-        or hypertension > 0.6
-        or intoxication > 0.003
+        hypertension > 0.35
+        or intoxication > 0.005
+        or time_since_slept > 1.5
+        or alertness < 0.05
     ):
         return 3  # sleep
-    elif alertness < 0.3 and intoxication < 0.003 and hypertension < 0.2:
+    elif alertness < 0.15 and intoxication < 0.005 and hypertension < 0.25:
         return 1  # drink coffee and work
-    elif work_done < 0.1 and intoxication < 0.003 and hypertension < 0.2:
+    elif work_done < 0.2 and intoxication < 0.005 and hypertension < 0.25:
         return 2  # drink beer and work
     else:
         return 0  # just work
