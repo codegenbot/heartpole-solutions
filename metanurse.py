@@ -3,23 +3,18 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # Stricter health risk thresholds
-    if hypertension > 0.2 or intoxication > 0.1 or time_since_slept > 6:
+    if hypertension > 0.25 or intoxication > 0.15 or time_since_slept > 6:
         return 3  # Sleep
 
-    # Sleep if alertness is critically low
-    if alertness < 0.65:
+    if alertness < 0.7:
         return 3  # Sleep
 
-    # Coffee for moderate alertness if safe health parameters
-    if 0.65 <= alertness < 0.8 and hypertension < 0.15 and intoxication < 0.08:
+    if 0.7 <= alertness < 0.85 and hypertension < 0.15 and intoxication < 0.1:
         return 1  # Drink coffee and work
 
-    # Regular sleep intervals to ensure productivity balance
-    if time_elapsed % 150 == 0:
-        return 3  # Periodic rest every 150 steps
-
-    # Default work condition
+    if hypertension < 0.1 and intoxication < 0.05 and alertness >= 0.85:
+        return 2  # Drink beer and work
+    
     return 0  # Just work
 
 for line in sys.stdin:
