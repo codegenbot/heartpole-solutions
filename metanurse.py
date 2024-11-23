@@ -1,16 +1,10 @@
 import sys
 
-
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
     # Critical sleep requirements
-    if (
-        alertness < 0.4
-        or hypertension > 0.1
-        or intoxication > 0.1
-        or time_since_slept > 8
-    ):
+    if alertness < 0.4 or hypertension > 0.1 or intoxication > 0.1 or time_since_slept > 8:
         return 3  # Sleep
 
     # Use coffee to boost alertness safely
@@ -23,7 +17,6 @@ def decide_action(
 
     # Otherwise, default to safe rest
     return 3  # Sleep
-
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
