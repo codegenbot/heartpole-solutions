@@ -1,5 +1,6 @@
 import sys
 
+
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
@@ -26,6 +27,7 @@ def decide_action(
 
     # Default to work under uncertain conditions to avoid negative health effects
     return 0
+
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
