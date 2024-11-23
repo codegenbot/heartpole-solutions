@@ -10,4 +10,4 @@ for line in sys.stdin:
     elif intoxication < 0.2 and alertness >= 0.5:
         print(0)  # just work
     else:
-        print(2)  # drink beer and work)
+        print(2)  # drink beer and work
