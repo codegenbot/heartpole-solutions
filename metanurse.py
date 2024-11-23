@@ -17,7 +17,6 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if work_done < 0.7 and alertness > 0.7:
         return 0  # Work if alertness is high and more work is needed
 
-    # Default scenarios
     return 0 if alertness >= 0.5 else 3  # Work if alert, otherwise sleep
 
 for line in sys.stdin:
