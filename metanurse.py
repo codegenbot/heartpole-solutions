@@ -13,10 +13,10 @@ def choose_action(observations):
 
     # Prioritize sleep for critical health issues
     if (
-        hypertension > 0.3
+        hypertension > 0.2
         or intoxication > 0.0005
-        or time_since_slept > 2.0
-        or alertness < 0.02
+        or time_since_slept > 1.0
+        or alertness < 0.05
     ):
         return 3  # sleep
 
