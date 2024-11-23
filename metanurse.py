@@ -1,6 +1,5 @@
 import sys
 
-
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
@@ -18,8 +17,8 @@ def decide_action(
 
     # Refine beer strategy to be more cautious
     if (
-        intoxication <= 0.1
-        and alertness < 0.5
+        intoxication <= 0.1 
+        and alertness < 0.5 
         and work_done < 0.6
         and time_elapsed < 10
     ):
@@ -40,7 +39,6 @@ def decide_action(
 
     # Final choice based on moderate alertness
     return 0 if alertness >= 0.45 else 3
-
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
