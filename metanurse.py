@@ -13,9 +13,9 @@ def decide_action(
         return 1  # Drink coffee and work
     
     if intoxication > 0.1:
-        return 2  # Drink beer and work
+        return 2  # Drink beer and work (to manage hypertension side effects)
     
-    if alertness >= 0.65 and intoxication <= 0.1:
+    if alertness >= 0.65 and intoxication <= 0.1 and hypertension <= 0.2:
         return 0  # Just work
 
     return 3  # Default: Sleep
