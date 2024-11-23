@@ -16,7 +16,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     # Use coffee cautiously to boost alertness, avoiding hypertension
     if alertness < 0.5 and hypertension <= 0.4:
         return 1
-
+    
     # Default to work if no adverse conditions
     return 0
 
