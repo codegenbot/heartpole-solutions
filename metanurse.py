@@ -16,7 +16,7 @@ def decide_action(
     if alertness < 0.4 and time_elapsed < 6 and hypertension < 0.2:
         return 1
 
-    # Be cautious with beer; prefer when intoxication is very low
+    # Be cautious with beer; prefer it when intoxication is very low
     if intoxication <= 0.1 and alertness < 0.5 and work_done < 0.5 and time_elapsed < 8:
         return 2
 
