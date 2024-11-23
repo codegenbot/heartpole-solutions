@@ -3,7 +3,7 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # High priority sleep for critical health issues
+    # High priority sleep for severe health issues
     if hypertension > 0.35 or intoxication > 0.15 or time_since_slept > 8:
         return 3  # Sleep
 
