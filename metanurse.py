@@ -15,7 +15,7 @@ def decide_action(
     if 0.7 <= alertness < 0.8 and hypertension <= 0.15 and intoxication <= 0.05:
         return 1  # Drink coffee and work
 
-    # Work if alertness is low but intoxication is minimal
+    # Avoid using beer; work instead of increasing intoxication
     if 0.65 <= alertness < 0.7 and intoxication <= 0.05:
         return 0  # Just work
 
