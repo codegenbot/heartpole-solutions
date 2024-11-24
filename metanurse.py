@@ -11,7 +11,7 @@ def choose_action(observations):
         work_done,
     ) = observations
 
-    # Aggressively prioritize sleep if health metrics are concerning
+    # Prioritize sleep if health metrics are concerning
     if (
         hypertension > 0.02
         or intoxication > 0.000003
@@ -20,7 +20,7 @@ def choose_action(observations):
     ):
         return 3
 
-    # Use coffee sparingly if alertness is low and health is not critical
+    # Use coffee if alertness is low and health is not critical
     if alertness < 0.1 and intoxication < 0.000003 and hypertension < 0.005:
         return 1
 
