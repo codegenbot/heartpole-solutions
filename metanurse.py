@@ -7,7 +7,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
         return 3  # Sleep
     if alertness < 0.3 or hypertension > 0.7:
         return 3  # Sleep
-    if alertness < 0.5 and hypertension < 0.5 and intoxication < 0.4:
+    if alertness < 0.5 and hypertension < 0.5:
         return 1  # Drink coffee and work
     if intoxication < 0.4 and hypertension < 0.6:
         return 2  # Drink beer and work
