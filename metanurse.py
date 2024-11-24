@@ -2,7 +2,7 @@ import sys
 
 def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Check for sleep when necessary
-    if alertness < 0.5 or time_since_slept > 3:
+    if alertness < 0.5 or time_since_slept > 3:  # Slightly relaxed threshold to sleep sooner
         return 3  # Sleep to regain alertness
 
     # Reduce hypertension and intoxication risks
