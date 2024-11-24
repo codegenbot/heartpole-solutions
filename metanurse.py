@@ -1,5 +1,6 @@
 import sys
 
+
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
@@ -10,6 +11,7 @@ def decide_action(
     if alertness >= 0.75:
         return 0  # Work when alertness is good, and health measures are safe
     return 2  # Drink beer if needed when alertness is moderate and other conditions are low
+
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
