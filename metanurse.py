@@ -11,12 +11,12 @@ def choose_action(observations):
         work_done,
     ) = observations
 
-    # Aggressively prioritize sleep for health
+    # Prioritize health more aggressively
     if (
-        time_since_slept > 0.002
-        or alertness < 0.0005
-        or hypertension > 0.0003
+        hypertension > 0.0003
         or intoxication > 0.00003
+        or time_since_slept > 0.002
+        or alertness < 0.0002
     ):
         return 3  # sleep
 
