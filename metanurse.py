@@ -14,7 +14,7 @@ def decide_action(
 
     # Prefer sleep if alertness is low and there is accumulating fatigue
     if alertness < 0.5 or time_since_slept > 5:
-        return 3  # Prefer sleep
+        return 3
 
     # Use coffee if it substantially improves alertness with minimal hypertension risk
     if alertness < 0.6 and hypertension < 0.35 and intoxication < 0.25:
