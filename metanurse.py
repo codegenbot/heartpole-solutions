@@ -4,20 +4,23 @@ def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
     if (
-        alertness < 0.5
-        or hypertension > 0.7
-        or intoxication > 0.5
-        or time_since_slept > 5
+        alertness < 0.6
+        or hypertension > 0.6
+        or intoxication > 0.4
+        or time_since_slept > 6
     ):
         return 3  # Sleep
 
-    if alertness >= 0.85 and hypertension <= 0.5 and intoxication <= 0.2:
+    if intoxication > 0.2:
+        return 3  # Sleep
+
+    if alertness >= 0.8 and hypertension <= 0.5 and intoxication <= 0.2:
         return 0  # Just work
 
-    if alertness >= 0.6 and alertness < 0.85 and hypertension <= 0.55:
+    if alertness < 0.8 and hypertension <= 0.55 and intoxication <= 0.2:
         return 1  # Drink coffee and work
 
-    return 3  # Default to sleep if other conditions don't match
+    return 3  # Sleep
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
