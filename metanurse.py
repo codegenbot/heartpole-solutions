@@ -3,7 +3,10 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    if alertness < 0.6 or time_since_slept >= 3:
+    if (
+        alertness < 0.6 
+        or time_since_slept >= 3 
+    ):
         return 3  # Sleep more aggressively when needed
     if intoxication > 0.2 or hypertension >= 0.4:
         return 0  # Avoid coffee to manage intoxication and hypertension
