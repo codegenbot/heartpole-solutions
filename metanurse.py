@@ -1,6 +1,9 @@
 import sys
 
-def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
+
+def decide_action(
+    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
+):
     # Ensure adequate sleep without oversleeping
     if time_since_slept > 6 or alertness < 0.5:
         return 3  # Sleep
@@ -22,6 +25,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
         return 0  # Just work
 
     return 3  # Sleep as a safe fallback
+
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
