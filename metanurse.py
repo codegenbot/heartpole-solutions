@@ -11,16 +11,20 @@ def choose_action(observations):
         work_done,
     ) = observations
 
-    if alertness < 0.1 or time_since_slept > 0.03:
-        return 3  # Sleep if alertness is very low or time since slept is high
+    # Prioritize sleep if alertness is low or time since slept is high
+    if alertness < 0.2 or time_since_slept > 0.05:
+        return 3
 
-    if alertness < 0.2 and intoxication < 0.000001 and hypertension < 0.001:
-        return 1  # Drink coffee and work if alertness is low and conditions are safe
+    # Avoid increasing hypertension or intoxication unless necessary
+    if alertness < 0.3 and intoxication < 0.000001 and hypertension < 0.002:
+        return 1
 
-    if work_done < 0.7 and intoxication < 0.000001 and hypertension < 0.001:
-        return 2  # Drink beer and work if work done is low and conditions are safe
+    # Only consider increasing productivity if health metrics are safe
+    if work_done < 0.8 and intoxication < 0.000001 and hypertension < 0.002:
+        return 2
 
-    return 0  # Just work otherwise
+    # Default to just working if all else is safe
+    return 0
 
 
 for _ in range(1000):
