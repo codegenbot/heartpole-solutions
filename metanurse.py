@@ -23,11 +23,11 @@ def decide_action(
     # Very limited scenarios to drink beer chiefly to enhance creativity or keep alert when slightly low
     if intoxication < 0.2 and alertness < 0.6 and hypertension < 0.3:
         return 2  # Drink beer and work
-
+    
     # Work if all health indicators are optimal and alertness is good
     if alertness >= 0.6 and hypertension < 0.25 and intoxication < 0.1:
         return 0  # Just work
-
+    
     # Default to work if health is stable
     return 0
 
