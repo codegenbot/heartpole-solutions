@@ -15,7 +15,7 @@ def decide_action(
     # Occasionally use beer if slight alertness drop and conditions are safe
     if alertness >= 0.5 and intoxication < 0.15:
         return 2  # Drink beer and work
-    return 1  # Default to working with coffee for mild alertness
+    return 0  # Default to working with coffee for mild alertness
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
