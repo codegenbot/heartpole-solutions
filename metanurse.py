@@ -1,13 +1,17 @@
 import sys
 
 def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    if time_since_slept >= 6 or alertness < 0.5 or hypertension > 0.7 or intoxication > 0.5:
+    if hypertension > 0.8 or intoxication > 0.8:
         return 3  # Sleep
-    if alertness < 0.7:
-        return 1  # Drink coffee and work if alertness is low
-    if hypertension > 0.6:
-        return 2  # Drink beer and work if hypertension is too high
-    return 0  # Just work if all metrics are within acceptable ranges
+    if time_since_slept >= 10:
+        return 3  # Sleep
+    if alertness < 0.3 or hypertension > 0.7:
+        return 3  # Sleep
+    if alertness < 0.5 and hypertension < 0.5 and intoxication < 0.4:
+        return 1  # Drink coffee and work
+    if intoxication < 0.4 and hypertension < 0.6:
+        return 2  # Drink beer and work
+    return 0  # Just work
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
