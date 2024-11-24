@@ -1,6 +1,8 @@
 import sys
 
-def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
+def decide_action(
+    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
+):
     if alertness < 0.35 or hypertension > 0.65 or intoxication > 0.45 or time_since_slept >= 8:
         return 3  # Sleep
 
