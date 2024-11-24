@@ -1,17 +1,26 @@
 import sys
 
+
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    if hypertension > 0.5 or intoxication > 0.3 or time_since_slept > 5:
-        return 3  # Sleep
-    if alertness < 0.6 and hypertension < 0.35 and intoxication < 0.2:
-        return 1  # Drink coffee and work
-    if alertness >= 0.75 and hypertension < 0.45 and intoxication < 0.15:
-        return 0  # Just work
-    if alertness >= 0.6 and hypertension < 0.4 and intoxication < 0.1:
-        return 2  # Drink beer and work
-    return 3  # Default to sleeping for better recovery    
+    # Prioritize sleep if any serious health alert is present
+    if (
+        alertness < 0.6
+        or time_since_slept > 4
+        or hypertension > 0.6
+        or intoxication > 0.5
+    ):
+        return 3
+    # Drink coffee if alertness is moderate, but avoid if it risks hypertension
+    if alertness < 0.8 and hypertension < 0.5:
+        return 1
+    # Work normally if all indicators are within healthy ranges
+    if alertness >= 0.8 and hypertension < 0.4 and intoxication < 0.3:
+        return 0
+    # Return 0 by default if all specific conditions are not met
+    return 0
+
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
