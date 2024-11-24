@@ -29,7 +29,7 @@ def decide_action(
     ):
         return 0  # Just work
 
-    # Use coffee if alertness is reduced but watch hypertension and intoxication
+    # Use coffee if alertness is hindered but watch hypertension and intoxication
     if alertness < 0.8 and hypertension < 0.6 and intoxication < 0.3:
         return 1  # Drink coffee and work
 
