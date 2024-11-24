@@ -11,7 +11,7 @@ def choose_action(observations):
         work_done,
     ) = observations
 
-    # Aggressively prioritize sleep for critical health conditions
+    # Prioritize health more aggressively
     if (
         hypertension > 0.0002
         or intoxication > 0.00002
