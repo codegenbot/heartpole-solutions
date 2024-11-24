@@ -16,7 +16,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     # Avoid beer when intoxication is already rising
     if 0.2 < intoxication < 0.3 and hypertension < 0.55:
         return 2  # Drink beer
-
+    
     return 3  # Default to safe action: sleep
 
 for line in sys.stdin:
