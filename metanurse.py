@@ -1,4 +1,6 @@
-def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
+def decide_action(
+    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
+):
     # Prioritize sleep for recovery
     if alertness < 0.6 or time_since_slept > 10:
         return 3  # Sleep for recovery
@@ -17,6 +19,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
 
     # Fallback option
     return 0
+
 
 import sys
 
