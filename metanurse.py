@@ -11,21 +11,18 @@ def choose_action(observations):
         work_done,
     ) = observations
 
-    # Strict health checks
     if (
-        hypertension > 0.1
-        or intoxication > 0.003
-        or time_since_slept > 8
-        or alertness < 0.2
+        hypertension > 0.5
+        or intoxication > 0.1
+        or time_since_slept > 10
+        or alertness < 0.1
     ):
         return 3  # sleep
 
-    # Moderate alertness boost with coffee
-    if alertness < 0.6 and intoxication < 0.002 and hypertension < 0.02:
+    if alertness < 0.3 and intoxication < 0.05 and hypertension < 0.3:
         return 1  # drink coffee and work
 
-    # Moderate work boost with beer
-    if work_done < 0.6 and intoxication < 0.002 and hypertension < 0.02:
+    if work_done < 0.3 and intoxication < 0.05 and hypertension < 0.3:
         return 2  # drink beer and work
 
     return 0  # just work
