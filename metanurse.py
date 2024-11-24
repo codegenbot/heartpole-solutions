@@ -1,8 +1,6 @@
 import sys
 
-def decide_action(
-    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
-):
+def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Critical health conditions must be addressed first
     if time_since_slept >= 6 or alertness < 0.5 or hypertension > 0.8 or intoxication > 0.5:
         return 3  # Sleep
