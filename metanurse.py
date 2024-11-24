@@ -6,13 +6,13 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
         alertness < 0.3
         or hypertension > 0.7
         or intoxication > 0.4
-        or time_since_slept > 6  
+        or time_since_slept > 6  # More frequent rest
     ):
         return 3
 
     # Drink coffee if alertness is moderately low, under safe conditions
     if (
-        alertness < 0.6  
+        alertness < 0.6  # More tolerance for coffee
         and hypertension < 0.6
         and intoxication < 0.2
         and time_since_slept <= 6
