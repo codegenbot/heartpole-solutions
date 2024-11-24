@@ -1,7 +1,7 @@
 import sys
 
 def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    # Critical Sleep necessity
+    # Critical sleep necessity
     if hypertension > 0.6 or intoxication > 0.4 or time_since_slept > 6:
         return 3  # Sleep
 
