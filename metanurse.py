@@ -1,6 +1,3 @@
-import sys
-
-
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
@@ -14,6 +11,8 @@ def decide_action(
         return 0  # Work when conditions are optimal
     return 3  # Default to sleeping to avoid risks
 
+
+import sys
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
