@@ -3,6 +3,7 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
+    # Adjusted thresholds for health risks
     if hypertension > 0.6 or intoxication > 0.55:
         return 3  # Sleep if health risks are above adjusted thresholds
 
