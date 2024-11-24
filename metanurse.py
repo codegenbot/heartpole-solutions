@@ -26,7 +26,7 @@ def choose_action(observations):
 
     # Avoid beer if a significant amount of work is already done
     if (
-        work_done < 0.3
+        work_done < 0.15
         and intoxication < 0.000005
         and hypertension < 0.01
         and work_done < 0.5
