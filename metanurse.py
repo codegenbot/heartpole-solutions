@@ -1,19 +1,19 @@
 import sys
 
 def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    # Prioritize critical health recovery: sleep if critical conditions are met
+    # Sleep conditions based on critical health parameters
     if alertness < 0.5 or hypertension > 0.7 or intoxication > 0.35 or time_since_slept >= 5:
         return 3  # Sleep
     
-    # Use caffeine judiciously under controlled conditions
+    # Use coffee under controlled conditions
     if alertness < 0.75 and hypertension < 0.4 and intoxication <= 0.1:
         return 1  # Coffee and work
 
-    # Work optimally without stimulants
+    # Just work if all conditions are optimal
     if alertness >= 0.75 and hypertension <= 0.5 and intoxication <= 0.15:
         return 0  # Just work
 
-    # Manage hypertension via beer cautiously
+    # Use beer if hypertension is concerning, but intoxication is low
     if intoxication <= 0.2 and hypertension > 0.5:
         return 2  # Drink beer and work
 
