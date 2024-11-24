@@ -1,8 +1,6 @@
 import sys
 
-def decide_action(
-    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
-):
+def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Immediate sleep if any critical health metric is breached
     if alertness < 0.5 or hypertension > 0.6 or intoxication > 0.3 or time_since_slept > 10:
         return 3
