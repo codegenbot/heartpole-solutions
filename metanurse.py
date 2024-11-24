@@ -2,20 +2,27 @@ import sys
 
 
 def choose_action(observations):
-    alertness, hypertension, intoxication, time_since_slept, _, work_done = observations
+    (
+        alertness,
+        hypertension,
+        intoxication,
+        time_since_slept,
+        time_elapsed,
+        work_done,
+    ) = observations
 
     if (
-        hypertension > 0.005
+        hypertension > 0.01
         or intoxication > 0.000001
-        or time_since_slept > 0.15
-        or alertness < 0.2
+        or time_since_slept > 0.2
+        or alertness < 0.1
     ):
         return 3
 
-    if alertness < 0.4 and intoxication < 0.000001 and hypertension < 0.003:
+    if alertness < 0.2 and intoxication < 0.000001 and hypertension < 0.003:
         return 1
 
-    if work_done < 0.6 and intoxication < 0.000001 and hypertension < 0.003:
+    if work_done < 0.4 and intoxication < 0.000001 and hypertension < 0.003:
         return 2
 
     return 0
