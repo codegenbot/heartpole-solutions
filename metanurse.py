@@ -1,27 +1,23 @@
 import sys
 
 def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    # Critical health indicators demand immediate sleep
-    if hypertension > 0.7 or intoxication > 0.5 or time_since_slept > 12:
+    # Sleep if any health indicator hits dangerous levels
+    if hypertension > 0.6 or intoxication > 0.4 or time_since_slept > 10:
         return 3  # Sleep
 
-    # Prevent moderate health discomfort by resting
-    if 8 <= time_since_slept <= 12 and (hypertension > 0.6 or intoxication > 0.4):
+    # Preemptively sleep to prevent health stretch when nearing danger thresholds
+    if 8 <= time_since_slept and (hypertension > 0.5 or intoxication > 0.3):
         return 3  # Sleep
 
-    # Enhance focus with coffee when significantly drowsy but stable health
-    if alertness < 0.4 and hypertension < 0.3 and intoxication < 0.2:
+    # Use coffee effectively as a productivity boost under safe conditions
+    if alertness < 0.6 and hypertension < 0.3 and intoxication < 0.3:
         return 1  # Drink coffee and work
 
-    # Optimal alertness facilitates direct work approach
-    if 0.7 <= alertness <= 1.0 and hypertension < 0.5 and intoxication < 0.2:
+    # Always aim to work when alertness and health conditions are sufficient
+    if 0.6 <= alertness <= 0.85 and hypertension < 0.4 and intoxication < 0.3:
         return 0  # Just work
 
-    # Minor alertness boost with coffee if health is stable
-    if 0.5 <= alertness < 0.7 and hypertension < 0.3 and intoxication < 0.2:
-        return 1  # Drink coffee and work
-
-    # For unexpected scenarios, ensure a fallback to rest
+    # Preventively sleep as a deterrent to deferred stress accumulation
     return 3  # Sleep
 
 for line in sys.stdin:
