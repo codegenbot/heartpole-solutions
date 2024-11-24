@@ -13,7 +13,9 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if alertness >= 0.75 and hypertension <= 0.4 and intoxication <= 0.2:
         return 0  # Just work
 
+    # Avoid beer, especially if productivity gain appears marginal
     # Default to sleep to ensure health
+
     return 3  # Default to sleep to prevent serious health risks
 
 for line in sys.stdin:
