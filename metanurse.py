@@ -1,21 +1,26 @@
 import sys
 
-def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    # Immediate sleep if severely lacking, or after long wake duration
-    if alertness < 0.3 or time_since_slept > 6:
-        return 3  # Sleep
+def decide_action(
+    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
+):
+    # Prioritize sleep if hypertension or intoxication are high
+    if hypertension > 0.7 or intoxication > 0.5 or time_since_slept >= 10:
+        return 3
 
-    if alertness > 0.7 and hypertension < 0.4 and intoxication < 0.15:
-        return 0  # Just work safely
+    # Sleep if it's been a while since the last sleep
+    if time_since_slept >= 8:
+        return 3
 
-    if 0.5 <= alertness <= 0.7 and hypertension < 0.5 and intoxication < 0.2:
-        return 1  # Drink coffee and work
+    # Work if alertness and health indicators are good
+    if alertness >= 0.7 and hypertension < 0.4 and intoxication < 0.2:
+        return 0
 
-    if 0.4 <= alertness < 0.5 and intoxication < 0.1 and hypertension < 0.35:
-        return 2  # Drink beer and work
+    # Use coffee to boost alertness if moderately alert and health is fine
+    if 0.5 <= alertness < 0.7 and hypertension < 0.6:
+        return 1
 
-    # Default to sleep to recover if no other safe actions are viable
-    return 3
+    # Default action if conditions are not critical
+    return 0
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
