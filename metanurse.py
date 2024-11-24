@@ -3,7 +3,7 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # Prioritize sleeping if thresholds are met or exceed safe limits
+    # Prioritize sleeping if critical thresholds are met or exceed safe limits
     if alertness < 0.3 or hypertension > 0.7 or intoxication > 0.5 or time_since_slept > 8:
         return 3  # Must sleep to recover
 
