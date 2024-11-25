@@ -1,16 +1,8 @@
 import sys
 
-
-def decide_action(
-    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
-):
+def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Immediate need for sleep
-    if (
-        alertness < 0.3
-        or hypertension > 0.65
-        or intoxication > 0.3
-        or time_since_slept > 8
-    ):
+    if alertness < 0.3 or hypertension > 0.65 or intoxication > 0.3 or time_since_slept > 8:
         return 3  # Sleep
 
     # Use coffee to boost alertness, but consider hypertension limits
@@ -26,7 +18,6 @@ def decide_action(
         return 2  # Drink beer and work
 
     return 3  # Default to sleep for safety and recovery
-
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
