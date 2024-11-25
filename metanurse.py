@@ -3,7 +3,7 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # Sleep if high hypertension, high intoxication, or haven't slept for too long
+    # Sleep if high hypertension or high intoxication or haven't slept for too long
     if hypertension > 0.2 or intoxication > 0.2 or time_since_slept >= 8:
         return 3
     # Sleep if alertness is very low
