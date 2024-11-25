@@ -25,7 +25,7 @@ def choose_action(observations):
         return 1  # drink coffee and work
 
     # If work is not done and conditions are safe, drink beer
-    if work_done < 0.7 and intoxication < 0.000001 and hypertension < 0.001:
+    if work_done < 0.3 and intoxication < 0.000001 and hypertension < 0.001:
         return 2  # drink beer and work
 
     return 0  # just work
