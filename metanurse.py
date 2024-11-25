@@ -4,23 +4,23 @@ def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
     # Immediate sleep if serious health risks
-    if hypertension > 0.04 or intoxication > 0.02 or alertness < 0.2:
-        return 3
-    
-    # Ensure regular sleep if too much time has passed without sleeping
-    if time_since_slept > 5 or time_elapsed > 10 or work_done > 0.7:
+    if hypertension > 0.03 or intoxication > 0.03 or alertness < 0.25:
         return 3
 
-    # Drink coffee to boost moderate alertness without increasing hypertension
-    if 0.35 <= alertness < 0.5 and hypertension < 0.02:
+    # Introduce proactive sleeping before critical points
+    if time_since_slept > 4 or (alertness < 0.35 and time_since_slept > 3):
+        return 3
+
+    # Drink coffee to boost alertness with moderate hypertension tolerance
+    if 0.3 <= alertness < 0.4 and hypertension < 0.025:
         return 1
 
     # Prefer to work if alertness is adequately high
-    if alertness >= 0.5:
+    if alertness >= 0.4:
         return 0
 
-    # Relax with beer only if everything else is in a safe range and alertness is low
-    if alertness < 0.3 and hypertension < 0.03 and intoxication < 0.03:
+    # Relax with beer if alertness is low and other risks are stable
+    if alertness < 0.3 and hypertension < 0.025 and intoxication < 0.025:
         return 2
 
     # Default to just work if all else fails
