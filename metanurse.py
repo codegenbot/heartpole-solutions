@@ -3,38 +3,38 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # Sleep if alertness is too low or potential health issues
+    # Sleep if health parameters are critically out of balance
     if (
-        alertness <= 0.6
-        or hypertension > 0.3
-        or intoxication > 0.15
-        or time_since_slept >= 7
+        alertness <= 0.5
+        or hypertension > 0.25
+        or intoxication > 0.1
+        or time_since_slept >= 10
     ):
-        return 3  # Sleep to improve health and reset
+        return 3  # Sleep to reset and maintain health
 
-    # Use coffee carefully to avoid increasing hypertension
+    # Moderate use of coffee to boost alertness safely, without risking hypertension
     if (
-        alertness < 0.75
-        and hypertension < 0.25
-        and intoxication < 0.12
+        alertness < 0.65
+        and hypertension < 0.18
+        and intoxication < 0.1
         and time_since_slept < 6
     ):
-        return 1  # Drink coffee if alertness boost needed without hypertension risk
+        return 1  # Drink coffee if it's safe enough to boost alertness
 
-    # Opt for pure work when conditions are reasonably optimal
-    if alertness >= 0.75 and hypertension <= 0.2 and intoxication <= 0.08:
-        return 0  # Just work in reasonably good conditions
+    # Work safely under optimal conditions
+    if alertness >= 0.8 and hypertension <= 0.15 and intoxication <= 0.05:
+        return 0  # Just work if conditions are optimal for productivity
 
-    # Consider beer if there's a need for stress relief and it's very safe
+    # Use beer wisely without risking high intoxication levels, only if relaxed work is needed
     if (
-        alertness > 0.85
-        and intoxication <= 0.05
-        and hypertension <= 0.1
-        and time_since_slept < 5
+        alertness > 0.75
+        and intoxication <= 0.02
+        and hypertension < 0.12
+        and time_since_slept < 4
     ):
-        return 2  # Drink beer if stress relief is safe
+        return 2  # Drink beer as a stress relief measure when it's very safe
 
-    return 0  # Default to working to maintain productivity
+    return 0  # Default to working if no alterations are needed
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
