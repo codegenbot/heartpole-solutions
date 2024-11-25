@@ -1,6 +1,5 @@
 import sys
 
-
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
@@ -11,7 +10,7 @@ def decide_action(
     # Avoid any work if high hypertension
     if hypertension >= 0.1:
         return 3
-
+    
     # Use coffee if alertness is moderate, and hypertension is low
     if 0.6 <= alertness < 0.8 and hypertension < 0.05:
         return 1
@@ -26,7 +25,6 @@ def decide_action(
 
     # Default to just work if no severe health indicators are triggered
     return 0
-
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
