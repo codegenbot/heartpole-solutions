@@ -1,7 +1,6 @@
 import sys
 
 def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    # Modified conditions prioritize sleep and better manage intoxicants and stimulants
     if time_since_slept > 5.5 or hypertension > 0.5 or alertness < 0.3:
         return 3  # Sleep to restore alertness and health balance
     if alertness > 0.7 and hypertension < 0.3 and intoxication == 0.0:
