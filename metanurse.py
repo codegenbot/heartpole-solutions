@@ -7,7 +7,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
         return 1  # Drink coffee
     if alertness < 0.55 and intoxication < 0.05 and hypertension < 0.20:
         return 2  # Drink beer
-    return 0  # Just work
+    return 0  # Just work as the default action
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
