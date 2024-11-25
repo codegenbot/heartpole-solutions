@@ -2,7 +2,7 @@ import sys
 
 def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Prioritize sleep if alertness is low or health metrics are outside safe bounds
-    if alertness < 0.5 or hypertension > 0.65 or intoxication > 0.15 or time_since_slept > 10:
+    if alertness < 0.5 or hypertension > 0.65 or intoxication > 0.15 or time_since_slept > 8:
         return 3  # Sleep
 
     # Optimal conditions for working continue without intervention
