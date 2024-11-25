@@ -1,31 +1,29 @@
 import sys
 
-def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    # Prioritize sleeping for critical conditions
-    if hypertension > 0.15 or intoxication > 0.2 or time_since_slept > 10:
-        return 3  # urgent need for sleep
+def decide_action(
+    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
+):
+    # Immediate health concerns
+    if hypertension > 0.15 or intoxication > 0.2:
+        return 3  # sleep to alleviate critical health issues
 
-    # Address moderate sleep needs or low alertness
-    if time_since_slept > 6 or alertness < 0.3:
-        return 3  # sleep needed when slightly fatigued
+    # Consider sleeping if significantly fatigued or overdue
+    if time_since_slept > 8 or alertness < 0.4:
+        return 3  # ensure recovery through sleep
 
-    # Use coffee if alertness is high with moderate hypertension
-    if alertness >= 0.7 and 0.1 <= hypertension < 0.2:
-        return 1  # use coffee to maintain productivity but watch for hypertension limits
+    # Utilize coffee when safe and needing a moderate boost
+    if 0.4 <= alertness < 0.7 and hypertension < 0.1:
+        return 1  # coffee is safe and beneficial here
 
-    # Use coffee to boost moderate alertness and maintain productivity
-    if 0.3 <= alertness < 0.7 and hypertension < 0.1:
-        return 1  # coffee helps sustain alertness without raising hypertension
-
-    # Optimal working conditions purely for productivity
+    # Most productive state without risks
     if alertness >= 0.7 and hypertension < 0.1 and intoxication < 0.1:
-        return 0  # ideal state, keep working
+        return 0  # keep working productively
 
-    # Handle low work done cautiously
-    if work_done < 0.2 and intoxication <= 0.1 and time_since_slept < 5 and alertness > 0.3:
-        return 2  # lightly use beer when not much work is done, avoid high intoxication impact
+    # Beer can relax but only when near idle thresholds
+    if work_done < 0.1 and intoxication <= 0.1:
+        return 2  # light beer if conditions are safe
 
-    # Default to just working under moderate conditions
+    # Default back to working when conditions are not critical
     return 0
 
 for line in sys.stdin:
