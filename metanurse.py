@@ -1,10 +1,16 @@
 import sys
 
+
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
     # If any critical condition exists, prioritize sleep
-    if alertness < 0.4 or hypertension > 0.75 or intoxication > 0.45 or time_since_slept > 10:
+    if (
+        alertness < 0.4
+        or hypertension > 0.75
+        or intoxication > 0.45
+        or time_since_slept > 10
+    ):
         return 3  # Need sleep
 
     # Optimal condition just for work
@@ -21,6 +27,7 @@ def decide_action(
 
     # When in doubt, prefer sleep to ensure health
     return 3
+
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
