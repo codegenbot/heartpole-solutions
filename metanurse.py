@@ -11,24 +11,21 @@ def choose_action(observations):
         work_done,
     ) = observations
 
-    # Critical health conditions: always sleep
     if (
-        hypertension > 0.5
-        or intoxication > 0.01
-        or time_since_slept > 7
-        or alertness < 0.2
+        hypertension > 0.25
+        or intoxication > 0.002
+        or time_since_slept > 6
+        or alertness < 0.15
     ):
         return 3  # sleep
 
-    # Moderate health conditions: avoid alcohol, use coffee if needed
-    if alertness < 0.3 and intoxication < 0.01 and hypertension < 0.3:
+    if alertness < 0.25 and intoxication < 0.002 and hypertension < 0.1:
         return 1  # drink coffee and work
 
-    # If health is okay, focus on work
-    if work_done < 0.5 and intoxication < 0.01 and hypertension < 0.3:
-        return 0  # just work
+    if work_done < 0.2 and intoxication < 0.002 and hypertension < 0.1:
+        return 2  # drink beer and work
 
-    return 3  # default to sleep if unsure
+    return 0  # just work
 
 
 for _ in range(1000):
