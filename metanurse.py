@@ -3,7 +3,6 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # Adjust conditions for better balance between work and health
     if (
         alertness < 0.6
         or hypertension > 0.06
@@ -18,7 +17,6 @@ def decide_action(
     if alertness >= 0.8 and hypertension < 0.03 and intoxication < 0.02:
         return 0  # Safest condition to just work
 
-    # Use beer sparingly and only under stricter conditions
     if work_done < 0.05 and intoxication <= 0.02 and alertness < 0.4:
         return 2
 
