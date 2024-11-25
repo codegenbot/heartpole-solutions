@@ -8,22 +8,20 @@ def decide_action(
         return 3
 
     # Need to rest
-    if alertness < 0.5 or time_since_slept > 4:
+    if alertness < 0.6 or time_since_slept > 5:
         return 3
 
     # Moderate health concerns - balance work and alertness
-    if 0.5 <= alertness < 0.7:
-        if hypertension < 0.02:
+    if 0.6 <= alertness < 0.8:
+        if hypertension < 0.02 and time_since_slept < 4:
             return 1
         else:
             return 0
 
-    if 0.7 <= alertness < 0.9:
-        return 0
+    if 0.8 <= alertness < 0.9:
+        return 1
 
-    if alertness >= 0.9:
-        return 0
-
+    # Default just work when everything seems balanced
     return 0
 
 for line in sys.stdin:
