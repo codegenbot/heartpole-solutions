@@ -15,7 +15,7 @@ def decide_action(
     if 0.4 <= alertness < 0.7 and hypertension < 0.6 and intoxication < 0.2:
         return 1  # Coffee and work
     
-    # Fallback to sleep to ensure no negative impact.
+    # Fallback to sleep to ensure no negative impact from beer use.
     return 3  # Default to sleep 
 
 for line in sys.stdin:
