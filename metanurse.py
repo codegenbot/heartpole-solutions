@@ -1,13 +1,12 @@
 import sys
 
-
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
     # Immediate sleep if serious health risks
     if hypertension > 0.04 or intoxication > 0.02 or alertness < 0.2:
         return 3
-
+    
     # Ensure regular sleep if too much time has passed without sleeping
     if time_since_slept > 5 or time_elapsed > 10 or work_done > 0.7:
         return 3
@@ -26,7 +25,6 @@ def decide_action(
 
     # Default to just work if all else fails
     return 0
-
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
