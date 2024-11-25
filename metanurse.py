@@ -17,7 +17,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if alertness >= 0.7 and hypertension < 0.4 and intoxication < 0.1:
         return 0  # Just work safely
 
-    # Default to sleep in unfavorable conditions
+    # Default to sleep
     return 3
 
 for line in sys.stdin:
