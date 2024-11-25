@@ -1,20 +1,30 @@
 import sys
 
-def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    # If health conditions are critical, prioritize sleep
-    if alertness < 0.4 or hypertension > 0.8 or intoxication > 0.6 or time_since_slept > 20:
-        return 3  # Critical need for sleep due to poor alertness or severe health risks
+def decide_action(
+    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
+):
+    # Prioritize sleeping if any condition is risky
+    if (
+        alertness < 0.3
+        or hypertension > 0.7
+        or intoxication > 0.25
+        or time_since_slept > 7
+    ):
+        return 3  # Sleep to prevent health issues
 
-    # If alertness is good and work can continue safely, just work
-    if alertness >= 0.6 and hypertension < 0.6 and intoxication < 0.4:
-        return 0  # Just work when in safe health range
+    # Drink coffee to boost alertness when it's low but health conditions are stable
+    if alertness < 0.6 and hypertension < 0.4 and intoxication < 0.1 and time_since_slept <= 7:
+        return 1  # Drink coffee and work
 
-    # If alertness needs improvement and coffee won't cause health issues, drink coffee and work
-    if 0.4 <= alertness < 0.6 and hypertension < 0.7 and intoxication < 0.5:
-        return 1  # Coffee can boost alertness effectively
+    # Work with default action if conditions are optimal
+    if alertness >= 0.6 and hypertension <= 0.5 and intoxication < 0.2:
+        return 0  # Continue working
+    
+    # Consider beer for mild intoxication with safe hypertension levels    
+    if intoxication >= 0.15 and hypertension < 0.6:
+        return 2  # Drink beer and work
 
-    # If at risk of tipping into poor health due to marginal alertness/health indicators, sleep
-    return 3  # Sleep is the safest action to prevent health issues
+    return 0  # Default to working under stable conditions
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
