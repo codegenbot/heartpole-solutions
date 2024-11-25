@@ -6,7 +6,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if hypertension < 0.05 and intoxication < 0.02 and alertness > 0.6:
         return 1  # Coffee only when safe and desired alertness level is low
     if alertness < 0.5: 
-        return 2  # Beer only when risky health metrics are low
+        return 2  # Beer only when risky health metrics are low; this is less preferable
     return 0  # Work when there are no immediate health risks
 
 for line in sys.stdin:
