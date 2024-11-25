@@ -10,7 +10,7 @@ def decide_action(
         return 0
     if 0.5 <= alertness <= 0.7 and hypertension < 0.5:
         return 1
-    if 0.4 <= alertness < 0.5 and intoxication < 0.15 and hypertension < 0.3:
+    if alertness < 0.5 and intoxication < 0.2 and hypertension < 0.3:
         return 2
     return 3
 
