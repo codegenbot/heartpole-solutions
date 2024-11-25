@@ -1,7 +1,10 @@
+import sys
+
+
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # Prioritize sleep if alertness is low, or significant time since last sleep, or hypertension is high
+    # Prioritize sleep as soon as alertness is low, significant time since last sleep, or high health risks
     if (
         alertness < 0.25
         or time_since_slept >= 4
@@ -10,7 +13,7 @@ def decide_action(
     ):
         return 3
 
-    # Drink coffee if alertness is low, avoiding hypertension and intoxication
+    # Drink coffee if alertness is low, making sure hypertension and intoxication are minimal
     if 0.25 <= alertness < 0.5 and hypertension < 0.04 and intoxication < 0.03:
         return 1
 
@@ -21,8 +24,6 @@ def decide_action(
     # Default to work if no immediate critical health flags
     return 0
 
-
-import sys
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
