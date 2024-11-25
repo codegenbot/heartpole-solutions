@@ -1,11 +1,13 @@
 import sys
 
-def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
+def decide_action(
+    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
+):
     # Sleep immediately for any significant health risk
     if hypertension > 0.05 or intoxication > 0.05:
         return 3
 
-    # Sleep if too low in alertness or overdue rest, giving health priority
+    # Sleep if too low in alertness or overdue rest
     if alertness < 0.6 or time_since_slept > 3:
         return 3
 
