@@ -13,9 +13,9 @@ def choose_action(observations):
 
     # Prioritize health
     if (
-        hypertension > 0.003
+        hypertension > 0.003  # Lower threshold for hypertension
         or intoxication > 0.000001
-        or time_since_slept > 0.1
+        or time_since_slept > 0.1  # Increase threshold for time_since_slept
         or alertness < 0.005
         or time_elapsed > 0.8
     ):
