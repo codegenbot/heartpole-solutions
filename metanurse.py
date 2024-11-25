@@ -1,7 +1,7 @@
 import sys
 
 def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    # Prioritize health over productivity with more refined thresholds
+    # Prioritize health over productivity with refined thresholds
     if hypertension > 0.3 or intoxication > 0.15 or alertness < 0.5 or time_since_slept > 6:
         return 3  # Sleep for health if any critical threshold is crossed
 
