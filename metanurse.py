@@ -1,3 +1,5 @@
+import sys
+
 def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Always prioritize sleep if health is at risk
     if alertness < 0.5 or hypertension > 0.1 or intoxication > 0.07 or time_since_slept > 5.5:
@@ -17,9 +19,6 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
 
     # Default action if none of the above conditions is met
     return 0
-
-# Read from stdin and process each line
-import sys
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
