@@ -13,7 +13,7 @@ def choose_action(observations):
 
     # Prioritize health
     if (
-        hypertension > 0.06
+        hypertension > 0.05
         or intoxication > 0.0002
         or time_since_slept > 1.5
         or alertness < 0.02
