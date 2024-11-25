@@ -11,7 +11,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     
     # Rarely allow beer, only when fully alert and safe
     if alertness == 1.0 and intoxication <= 0.02 and hypertension < 0.05:
-        return 2  # Beer meant for negligible and safe conditions
+        return 2  # Beer only for negligible and safe conditions
     
     return 0  # Just work if everything is controlled
 
