@@ -1,40 +1,23 @@
 import sys
 
-def decide_action(
-    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
-):
-    # Sleep if health parameters are critically out of balance
-    if (
-        alertness <= 0.5
-        or hypertension > 0.25
-        or intoxication > 0.1
-        or time_since_slept >= 10
-    ):
-        return 3  # Sleep to reset and maintain health
+def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
+    # Highly prioritize sleep to mitigate negative health metrics
+    if hypertension > 0.15 or intoxication > 0.05 or alertness < 0.4 or time_since_slept > 4:
+        return 3
+    
+    # Use coffee sparingly, only when alertness is moderately low
+    if alertness < 0.5 and hypertension <= 0.1 and intoxication < 0.03 and time_since_slept < 3:
+        return 1
 
-    # Moderate use of coffee to boost alertness safely, without risking hypertension
-    if (
-        alertness < 0.65
-        and hypertension < 0.18
-        and intoxication < 0.1
-        and time_since_slept < 6
-    ):
-        return 1  # Drink coffee if it's safe enough to boost alertness
+    # Very conservative beer consumption policy
+    if alertness > 0.8 and hypertension < 0.05 and intoxication < 0.01 and work_done < 0.1:
+        return 2
 
-    # Work safely under optimal conditions
-    if alertness >= 0.8 and hypertension <= 0.15 and intoxication <= 0.05:
-        return 0  # Just work if conditions are optimal for productivity
+    # Work in health-optimal conditions
+    if alertness > 0.6 and hypertension <= 0.1 and intoxication < 0.03:
+        return 0
 
-    # Use beer wisely without risking high intoxication levels, only if relaxed work is needed
-    if (
-        alertness > 0.75
-        and intoxication <= 0.02
-        and hypertension < 0.12
-        and time_since_slept < 4
-    ):
-        return 2  # Drink beer as a stress relief measure when it's very safe
-
-    return 0  # Default to working if no alterations are needed
+    return 0
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
