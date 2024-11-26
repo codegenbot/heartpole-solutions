@@ -9,7 +9,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if alertness < 0.4 or time_since_slept >= 6:
         return 3  # Sleep to maintain alertness
 
-    # Allow coffee when it's safe
+    # Let coffee be an option with moderate alertness and low hypertension
     if 0.4 <= alertness < 0.5 and hypertension < 0.02:
         return 1  # Drink coffee and work
 
