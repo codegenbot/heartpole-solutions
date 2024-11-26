@@ -1,5 +1,6 @@
 import sys
 
+
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
@@ -21,6 +22,7 @@ def decide_action(
 
     # If conditions for coffee aren't met, sleep:
     return 3
+
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
