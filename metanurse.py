@@ -4,20 +4,20 @@ def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
     # Critical health management: Sleep if high risk
-    if hypertension > 0.03 or intoxication >= 0.03:
+    if hypertension > 0.03 or intoxication > 0.04:
         return 3
-    if time_since_slept > 5:
+    if time_since_slept > 4:
         return 3
 
-    # Work if conditions are optimal
-    if alertness >= 0.75 and hypertension < 0.015 and intoxication < 0.015:
-        return 0
-
-    # Strategic use of coffee: Only when necessary
-    if alertness < 0.6 and hypertension < 0.02 and intoxication < 0.01:
+    # Strategic use of coffee: encourage usage for improved alertness
+    if alertness < 0.65 and hypertension < 0.02 and intoxication < 0.02:
         return 1
 
-    # Ensure proper rest if workload is significant
+    # Work if conditions are optimal
+    if alertness >= 0.7 and hypertension < 0.015 and intoxication < 0.015:
+        return 0
+
+    # Encourage sleep after significant workload
     if work_done > 8 and time_elapsed > 15:
         return 3
 
