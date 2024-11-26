@@ -1,6 +1,5 @@
 import sys
 
-
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
@@ -22,7 +21,6 @@ def decide_action(
         return 2  # Reward with beer in optimal conditions
 
     return 0  # Default to work if conditions are stable
-
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
