@@ -1,9 +1,6 @@
 import sys
 
-
-def decide_action(
-    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
-):
+def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Sleep if sleep deprived or high hypertension/intoxication is detected
     if time_since_slept >= 5 or hypertension > 0.01 or intoxication > 0.1:
         return 3
@@ -15,7 +12,6 @@ def decide_action(
         return 0
     # If caffeine is not advisable, safest work with caution
     return 0
-
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
