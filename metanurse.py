@@ -3,32 +3,26 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # Priority to prevent severe conditions
-    if hypertension > 0.04 or intoxication > 0.05:
+    # Health risk management threshold updated
+    if hypertension > 0.03 or intoxication > 0.04:
+        return 3
+    if time_since_slept > 6:
         return 3
 
-    # Consider sleep if significantly overdue
-    if time_since_slept > 8:
-        return 3
-
-    # Encourage coffee use more
-    if alertness < 0.6:
-        if hypertension < 0.03 and intoxication < 0.03:
+    # Adjust caffeine usage for alertness
+    if alertness < 0.7:
+        if hypertension < 0.02 and intoxication < 0.02:
             return 1
 
-    # Encourage work when safe
-    if alertness > 0.5 and hypertension < 0.03 and intoxication < 0.03:
+    # Optimal working condition
+    if alertness > 0.75 and hypertension < 0.015 and intoxication < 0.015:
         return 0
 
-    # Guard against exhaustion
-    if work_done > 20 and time_elapsed > 50:
+    # Continuous work balance and sleep management
+    if work_done > 25 or time_elapsed > 60:
         return 3
 
-    # Default to general productivity
-    if alertness >= 0.6:
-        return 0
-
-    # Default: Sleep
+    # Default action: Sleep
     return 3
 
 for line in sys.stdin:
