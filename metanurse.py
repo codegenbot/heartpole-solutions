@@ -15,7 +15,7 @@ def choose_action(observations):
     if (
         hypertension > 0.01
         or intoxication > 0.000003
-        or time_since_slept > 0.7
+        or time_since_slept > 0.6
         or alertness < 0.05
     ):
         return 3  # sleep
