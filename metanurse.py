@@ -1,9 +1,6 @@
 import sys
 
-
-def decide_action(
-    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
-):
+def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Adjust thresholds for hypertensive risk and intoxication
     if hypertension > 0.1 or intoxication > 0.3:
         return 3  # Sleep to combat high health risks
@@ -21,7 +18,6 @@ def decide_action(
         return 0  # Proceed with work as conditions are favorable
 
     return 0  # Default to working as productive baseline
-
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
