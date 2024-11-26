@@ -1,9 +1,6 @@
 import sys
 
-
-def decide_action(
-    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
-):
+def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Immediate sleep for serious health risks
     if hypertension >= 0.1 or intoxication >= 0.25:
         return 3  # Sleep to recover
@@ -22,7 +19,6 @@ def decide_action(
 
     # Fallback to default working
     return 0
-
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
