@@ -1,5 +1,6 @@
 import sys
 
+
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
@@ -18,6 +19,7 @@ def decide_action(
 
     # Avoid beer consumption as this seemed non-beneficial
     return 0  # Default to work when conditions are generally stable
+
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
