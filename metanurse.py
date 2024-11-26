@@ -11,7 +11,7 @@ def decide_action(
     if alertness < 0.3 or time_since_slept >= 8:
         return 3  # Sleep to recover alertness
 
-    # Consider caffeine only if safe and productive
+    # Consider caffeine only if safe and potentially productive
     if 0.3 <= alertness < 0.6 and hypertension < 0.02:
         return 1  # Drink coffee and work to boost alertness
 
