@@ -1,8 +1,6 @@
 import sys
 
-def decide_action(
-    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
-):
+def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Tighter control on health indicators
     if hypertension > 0.03 or intoxication > 0.07:
         return 3
