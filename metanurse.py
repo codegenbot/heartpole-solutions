@@ -13,7 +13,6 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if 0.5 <= alertness < 0.7 and hypertension < 0.04 and intoxication < 0.03:
         return 1
     
-    # Avoid beer due to risk of exacerbating intoxication and health issues
     # Resort to beer only if alertness is critically low and no other option
     if alertness < 0.3 and work_done < 0.01 and intoxication < 0.02:
         return 2
