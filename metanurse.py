@@ -8,7 +8,7 @@ def decide_action(
         return 3
     if time_since_slept > 7.0:
         return 3
-
+    
     # Resource allocation to improve productivity
     if alertness < 0.65 and hypertension < 0.03 and intoxication < 0.03:
         return 1
