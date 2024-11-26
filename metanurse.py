@@ -13,8 +13,8 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     if alertness < 0.7 and hypertension < 0.015 and intoxication < 0.02:
         return 1
 
-    # Consider stopping work if productivity sufficiency is reached
-    if work_done > 50:  # Assuming a threshold for productivity sufficiency
+    # Stop work if productivity is sufficient
+    if work_done > 0.8:
         return 3
 
     # Default work to continue productivity
