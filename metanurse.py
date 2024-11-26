@@ -2,7 +2,7 @@ import sys
 
 def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Immediate sleep if serious health risks
-    if hypertension > 0.02 or intoxication > 0.02 or alertness < 0.25:
+    if hypertension > 0.02 or intoxication > 0.02:
         return 3
 
     # Sleep if prolonged wakefulness or low alertness
