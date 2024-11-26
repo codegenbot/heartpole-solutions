@@ -5,22 +5,22 @@ def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
     # Prioritize sleep if health indicators are risky:
-    if hypertension > 0.07 or intoxication > 0.15:
+    if hypertension > 0.07 or intoxication > 0.12:
         return 3
-    if time_since_slept > 5:  # Slightly increased sleep interval
+    if time_since_slept > 3:
         return 3
-    if alertness < 0.4:  # Lowered to ensure sleep when very fatigued
+    if alertness < 0.5:
         return 3
 
-    # Coffee to boost alertness when slightly fatigued:
-    if 0.4 <= alertness < 0.7 and hypertension < 0.05 and intoxication < 0.05:
+    # Coffee can be consumed to boost alertness when safe:
+    if alertness < 0.65 and hypertension < 0.05 and intoxication < 0.05:
         return 1
 
-    # Work when alert and healthy:
-    if alertness >= 0.7 and hypertension < 0.04 and intoxication < 0.04:
+    # Work when well-alert and health indicators are safe:
+    if alertness >= 0.75 and hypertension < 0.05 and intoxication < 0.05:
         return 0
 
-    # Default to sleep if unsure:
+    # Default to sleep if not safely alert or able to work:
     return 3
 
 
