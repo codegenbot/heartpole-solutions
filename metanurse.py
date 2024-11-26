@@ -1,6 +1,7 @@
 import sys
 
 def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
+    # Prioritizing health by modifying thresholds
     if hypertension > 0.015 or intoxication > 0.1:
         return 3  # sleep if moderate health risks
     if alertness < 0.4 or time_since_slept >= 8:
