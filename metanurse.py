@@ -4,21 +4,22 @@ import sys
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # High-risk health indicators prompt sleep:
-    if hypertension > 0.05 or intoxication > 0.1:
+    # Strict health risk management:
+    if hypertension > 0.04 or intoxication > 0.05:
         return 3
-    if time_since_slept > 6:
+    if time_since_slept > 5:
         return 3
 
-    # Use coffee when alertness is low and it's safe:
-    if alertness < 0.7 and hypertension < 0.03 and intoxication < 0.03:
-        return 1
+    # Carefully manage caffeine intake:
+    if alertness < 0.65:
+        if hypertension < 0.03 and intoxication < 0.03:
+            return 1
 
-    # Optimal conditions for working without coffee:
-    if alertness >= 0.8 and hypertension < 0.02 and intoxication < 0.02:
+    # Optimize working conditions:
+    if alertness > 0.7 and hypertension < 0.02 and intoxication < 0.02:
         return 0
 
-    # Resort to sleep if conditions don't allow safe coffee consumption:
+    # Default to sleeping to restore health and alertness:
     return 3
 
 
