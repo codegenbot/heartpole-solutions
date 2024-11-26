@@ -1,23 +1,22 @@
 import sys
 
-def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    # Adjust thresholds for hypertensive risk and intoxication
-    if hypertension > 0.1 or intoxication > 0.3:
-        return 3  # Sleep to combat high health risks
 
-    # Re-evaluate necessity for sleep
-    if time_since_slept >= 8 or alertness < 0.3:
-        return 3  # Sleep for recovery and optimal productivity
+def decide_action(
+    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
+):
+    # Prioritize health: sleep if critical stats are observed
+    if intoxication > 0.15 or hypertension > 0.03 or time_since_slept >= 8:
+        return 3
+    if alertness < 0.5 or (time_since_slept >= 6 and alertness < 0.6):
+        return 3
+    if 0.5 <= alertness < 0.7 and hypertension < 0.03 and intoxication < 0.1:
+        return 1
+    if alertness >= 0.7 and hypertension < 0.02 and intoxication < 0.1:
+        return 0
+    if intoxication >= 0.1 and hypertension < 0.025:
+        return 2
+    return 0
 
-    # Optimize alertness with coffee
-    if alertness < 0.6:
-        return 1  # Drink coffee and work to heighten alertness
-
-    # Optimized working condition
-    if alertness >= 0.6:
-        return 0  # Proceed with work as conditions are favorable
-
-    return 0  # Default to working as productive baseline
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
