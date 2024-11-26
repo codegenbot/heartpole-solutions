@@ -15,6 +15,7 @@ def decide_action(
     if alertness >= 0.75 and hypertension < 0.04 and intoxication < 0.05:
         return 0
     
+    # Avoid beer to prevent increasing intoxication beyond safe levels
     # Resort to sleep if no optimal work or coffee conditions
     return 3
 
