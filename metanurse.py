@@ -1,12 +1,13 @@
 import sys
 
+
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # Prioritize health metrics first
+    # Always address critical health metrics first
     if hypertension > 0.06 or intoxication > 0.12:
         return 3  # Sleep if any health metric is too high
-    
+
     if time_since_slept > 8:
         return 3  # Sleep if it's been too long since last sleep
 
@@ -22,6 +23,7 @@ def decide_action(
         return 2  # Drink beer and work
 
     return 3  # Default is to sleep as a preventive measure
+
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
