@@ -18,7 +18,7 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
         return 1  # Use coffee to boost alertness cautiously
     
     # Optimize performance when appropriately alert
-    if 0.5 <= alertness < 0.85 or (work_done > 8.0 and time_since_slept < 4):
+    if 0.5 <= alertness < 0.85:
         return 0  # Focus on work efficiently
     
     # Default action to just work if no immediate health concerns or need for rest
