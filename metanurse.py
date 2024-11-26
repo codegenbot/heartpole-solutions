@@ -15,7 +15,7 @@ def decide_action(
     if (alertness > 0.6 and intoxication < 0.05) or work_done > 0.5:
         return 2  # Occasionally relax with beer if moderate activity is achieved
     return 0  # Default to just work
-
+    
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
     action = decide_action(*observations)
