@@ -4,11 +4,11 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
     # Sleep for lower risk thresholds
     if hypertension > 0.02 or intoxication > 0.08:
         return 3
-
+    
     # Sleep to recover if nearing exhaustion
     if time_since_slept > 5 or alertness < 0.4:
         return 3
-
+    
     # Coffee to boost mild alertness decline
     if alertness < 0.55 and hypertension < 0.02:
         return 1
