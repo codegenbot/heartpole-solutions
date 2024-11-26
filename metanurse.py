@@ -1,5 +1,6 @@
 import sys
 
+
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
@@ -21,6 +22,7 @@ def decide_action(
 
     # Default to sleeping to restore health and alertness:
     return 3
+
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
