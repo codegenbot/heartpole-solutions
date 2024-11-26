@@ -1,10 +1,8 @@
 import sys
 
-
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
-    # Prioritize health: sleep if critical stats are observed
     if intoxication > 0.15 or hypertension > 0.03 or time_since_slept >= 8:
         return 3
     if alertness < 0.5 or (time_since_slept >= 6 and alertness < 0.6):
@@ -16,7 +14,6 @@ def decide_action(
     if intoxication >= 0.1 and hypertension < 0.025:
         return 2
     return 0
-
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
