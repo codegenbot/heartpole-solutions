@@ -1,8 +1,6 @@
 import sys
 
-def decide_action(
-    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
-):
+def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Immediate sleep for serious health indicators
     if hypertension > 0.010 or intoxication > 0.025:
         return 3
