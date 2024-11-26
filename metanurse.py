@@ -15,6 +15,10 @@ def decide_action(
     if 0.6 <= alertness < 0.8 and hypertension <= 0.02:
         return 1
 
+    # Avoid beer use unless intoxication is permissible (keep other actions preferred)
+    if alertness >= 0.8 and intoxication <= 0.01:
+        return 2
+
     # Default to working without any boosters
     return 0
 
