@@ -19,7 +19,7 @@ def choose_action(observations):
     ):
         return 3  # sleep
 
-    if alertness < 0.25 and intoxication < 0.0000005 and hypertension < 0.03:
+    if alertness < 0.3 and intoxication < 0.0000005 and hypertension < 0.03:
         return 1  # drink coffee and work
 
     if work_done < 0.0000005 and intoxication < 0.0000005 and hypertension < 0.03:
