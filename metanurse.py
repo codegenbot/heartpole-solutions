@@ -1,5 +1,3 @@
-import sys
-
 def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
     # Prioritize immediate health issues
     if hypertension > 0.025 or intoxication > 0.12:
@@ -19,6 +17,8 @@ def decide_action(alertness, hypertension, intoxication, time_since_slept, time_
 
     # Fallback to working cautiously
     return 0
+
+import sys
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
