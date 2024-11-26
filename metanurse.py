@@ -1,5 +1,6 @@
 import sys
 
+
 def decide_action(
     alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
 ):
@@ -12,6 +13,7 @@ def decide_action(
     if 0.65 <= alertness <= 0.85 and hypertension < 0.01:
         return 0
     return 3
+
 
 for line in sys.stdin:
     observations = list(map(float, line.strip().split()))
