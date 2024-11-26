@@ -1,16 +1,16 @@
 import sys
 
-def decide_action(alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done):
-    if alertness < 0.5 or time_since_slept >= 6:  # Prioritize rest earlier
+def decide_action(
+    alertness, hypertension, intoxication, time_since_slept, time_elapsed, work_done
+):
+    if alertness < 0.6 or time_since_slept >= 5:
         return 3
-    if hypertension >= 0.03:  # Avoid coffee if hypertension is high
-        return 3 if time_since_slept < 6 else 2
-    if intoxication >= 0.12:  # Adjusted to allow minor intoxication
-        return 3 if time_since_slept >= 5 else 2
-    if 0.7 <= alertness < 0.9 and hypertension < 0.025 and intoxication < 0.08:
+    if hypertension >= 0.01 or intoxication > 0.08:
+        return 3
+    if 0.6 <= alertness < 0.75 and hypertension < 0.01:
         return 1
-    if alertness >= 0.9 and hypertension < 0.025 and intoxication < 0.08 and time_since_slept < 5:
-        return 0
+    if 0.75 <= alertness < 0.85 and intoxication < 0.05:
+        return 2
     return 0
 
 for line in sys.stdin:
