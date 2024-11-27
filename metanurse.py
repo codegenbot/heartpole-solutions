@@ -11,7 +11,7 @@ def choose_action(observations):
         work_done,
     ) = observations
 
-    # Prioritize health conditions more aggressively
+    # Prioritize health conditions
     if (
         hypertension > 0.005
         or intoxication > 0.00005
