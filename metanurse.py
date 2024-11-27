@@ -11,7 +11,7 @@ def choose_action(observations):
         work_done,
     ) = observations
 
-    # Prioritize health conditions
+    # Strict health conditions
     if hypertension > 0.0005 or intoxication > 0.00005 or time_since_slept > 0.0005:
         return 3  # sleep
 
