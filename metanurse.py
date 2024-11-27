@@ -15,7 +15,7 @@ def choose_action(observations):
     if (
         hypertension > 0.0001
         or intoxication > 0.00000001
-        or time_since_slept > 0.02  # Increased threshold for sleep
+        or time_since_slept > 0.02
         or alertness < 0.05
     ):
         return 3  # sleep
